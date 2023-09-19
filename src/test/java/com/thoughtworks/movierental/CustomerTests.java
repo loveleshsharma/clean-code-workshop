@@ -25,6 +25,17 @@ class CustomerTest {
     }
 
     @Test
+    public void checkBlueRayMovieStatementGeneration() {
+        Customer testCustomer = new Customer("David");
+        testCustomer.addRental(new Rental(new Movie("Martian", Movie.BLUERAY), 3));
+
+        Assertions.assertEquals("Rental Record for David\n" +
+                "\tMartian\t12.0\n" +
+                "Amount owed is 12.0\n" +
+                "You earned 3 frequent renter points", testCustomer.textStatement());
+    }
+
+    @Test
     public void checkHTMLStatementGeneration() {
         Customer customerOne = new Customer("John");
         customerOne.addRental(new Rental(new Movie("Interstellar", Movie.REGULAR), 10));

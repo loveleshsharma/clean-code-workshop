@@ -33,13 +33,21 @@ public class Rental {
                 if (daysRented > 3)
                     amount += (daysRented - 3) * 1.5;
                 break;
+            case Movie.BLUERAY:
+                amount += daysRented * 4;
+                break;
         }
         return amount;
     }
 
     public int frequentRenterPoints() {
-        if (isNewMovie()) return 2;
+        if (isBlueRayMovie()) return 3;
+        else if (isNewMovie()) return 2;
         return 1;
+    }
+
+    private boolean isBlueRayMovie() {
+        return movie.getPriceCode() == Movie.BLUERAY;
     }
 
     private boolean isNewMovie() {
