@@ -22,16 +22,10 @@ public class Rental {
     }
 
     public int frequentRenterPoints() {
-        if (isBlueRayMovie()) return 3;
-        else if (isNewMovie()) return 2;
+        if (this.movie.isBlueRayMovie()) return 3;
+        else if (this.movie.isNewMovie() && this.daysRented > 1) return 2;
         return 1;
     }
 
-    private boolean isBlueRayMovie() {
-        return movie.getPriceCode() == Movie.BLUERAY;
-    }
 
-    private boolean isNewMovie() {
-        return (movie.getPriceCode() == Movie.NEW_RELEASE) && daysRented > 1;
-    }
 }

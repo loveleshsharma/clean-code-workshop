@@ -49,4 +49,12 @@ public class Movie {
     public String getTitle() {
         return title;
     }
+
+    public boolean isBlueRayMovie() {
+        return this.getPriceCode() == Movie.BLUERAY;
+    }
+
+    public boolean isNewMovie() {
+        return (this.getPriceCode() == Movie.NEW_RELEASE);
+    }
 }
